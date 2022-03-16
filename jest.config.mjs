@@ -21,7 +21,11 @@ export default {
       ...defaultConfig,
       testEnvironment: 'node',
       displayName: 'backend',
-      collectCoverageFrom: ['src/', '!src/index.js'],
+      collectCoverageFrom: [
+        'src/',
+        '!src/index.js',
+        '!**/tests/unit/utils/**/*.js',
+      ],
       transformIgnorePatterns: [
         ...defaultConfig.transformIgnorePatterns,
         'public',
