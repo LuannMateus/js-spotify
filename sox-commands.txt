@@ -14,7 +14,7 @@ sox \
   "src/public/audio/fx/Applause Sound Effect HD No Copyright (128 kbps).mp3" \
   -r 48000 \
   -t mp3 \
-  "output.mp3
+  "output.mp3"
 
 // Obter o bitrate
 sox \

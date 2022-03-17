@@ -9,11 +9,14 @@
     "live-reload": "nodemon --legacy-watch src/index.js",
     "test": "set LOG_DISABLED=true && set NODE_OPTIONS=--experimental-vm-modules --no-warnings && jest --no-cache",
     "test:watch": "set LOG_DISABLED=true && set NODE_OPTIONS=--experimental-vm-modules --no-warnings && jest --no-cache --watchAll",
-    "test:coverage": "LOG_DISABLED=true && set NODE_OPTIONS=--experimental-vm-modules --no-warnings && jest --no-cache --watchAll --coverage tests/unit",
+    "test:coverage": "set LOG_DISABLED=true && set NODE_OPTIONS=--experimental-vm-modules --no-warnings && jest --no-cache --watchAll --coverage tests/unit",
     "test:linux": "LOG_DISABLED=true NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --no-cache",
     "test:watch:linux": "LOG_DISABLED=true NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --no-cache --watchAll",
     "test:coverage:linux": "LOG_DISABLED=true NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --no-cache --watchAll --coverage tests/unit",
-    "live-reload:docker": "docker-compose up --build live-reload"
+    "live-reload:docker": "docker-compose up --build live-reload",
+    "test:docker": "docker-compose up --build test",
+    "test:watch:docker": "docker-compose up --build test-watch",
+    "test:coverage:docker": "docker-compose up --build test-coverage"
   },
   "engines": {
     "node": "17"
@@ -23,7 +26,9 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "27",
-    "nodemon": "2"
+    "nodemon": "2",
+    "portfinder": "1.0.28",
+    "supertest": "6.2.2"
   },
   "dependencies": {
     "pino": "7.8.0",
