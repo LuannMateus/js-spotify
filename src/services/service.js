@@ -25,8 +25,6 @@ export class Service {
     this.currentBitRate = 0;
     this.throttleTransform = {};
     this.currentReadable = {};
-
-    this.startStreaming();
   }
 
   getClientStream() {
@@ -119,6 +117,10 @@ export class Service {
       throttleTransform,
       this.broadCast()
     );
+  }
+
+  stopStreaming() {
+    this.throttleTransform?.end?.();
   }
 
   async getFileInfo(file) {

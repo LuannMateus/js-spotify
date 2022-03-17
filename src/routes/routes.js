@@ -1,6 +1,7 @@
 import { Controller } from '../controllers/controller.js';
 import config from '../config/config.js';
 import { logger } from '../utils/pino.js';
+import { once } from 'events';
 
 const {
   location,
@@ -54,6 +55,16 @@ async function routes(request, response) {
     });
 
     return stream.pipe(response);
+  }
+
+  if (method === 'POST' && url === '/controller') {
+    const data = await once(request, 'data');
+
+    const item = JSON.parse(data);
+
+    const result = await controller.handleCommand(item);
+
+    return response.end(JSON.stringify(result));
   }
 
   if (method === 'GET') {
